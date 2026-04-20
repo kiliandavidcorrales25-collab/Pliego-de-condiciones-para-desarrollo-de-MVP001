@@ -1,0 +1,12 @@
+for $Vehiculo in doc("C:\Users\IEUser\Desktop\Escenario01\logistics.xml")
+where $Vehiculo/Estado = "En ruta" and xs:integer($Vehiculo/bateria) < 15
+return $Vehiculo
+
+
+for $paquete in doc("C:\Users\IEUser\Desktop\Escenario01\logistics.xml")
+where not(matches($paquete/ID_Paquete,"PKG-[0-9]{5}[A-Z]"))
+return $paquete
+
+for $estado in distinct-values (doc("C:\Users\IEUser\Desktop\Escenario01\logistics.xml"))
+let $Vehiculo := doc("C:\Users\IEUser\Desktop\Escenario01\logistics.xml")
+Vehiculo
